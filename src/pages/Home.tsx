@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
@@ -293,7 +292,6 @@ function FlagDetailDialog({ flag, onClose, onResolve }: {
 export default function Home() {
   const [activeTab, setActiveTab] = useState('dashboard')
   const [loading, setLoading] = useState(false)
-  const [analysisInput, setAnalysisInput] = useState('')
   const [workflowResponse, setWorkflowResponse] = useState<WorkflowCoordinatorResult | null>(null)
   const [reportResponse, setReportResponse] = useState<ReportGenerationResult | null>(null)
   const [selectedFlag, setSelectedFlag] = useState<FlagItem | null>(null)
@@ -371,14 +369,11 @@ export default function Home() {
   }, [])
 
   const handleRunAnalysis = async () => {
-    if (!analysisInput.trim()) {
-      setAnalysisInput("Analyze the following financial data: Swift payment of $150,000 to Vendor ABC dated 2026-01-15, budget allocated $120,000. Insurance policy renewal due 2026-01-10 but not yet processed. Broker report shows Task C review pending for 8 days.")
-      return
-    }
-
     setLoading(true)
     try {
-      const result = await callAIAgent(analysisInput, WORKFLOW_COORDINATOR_ID)
+      const message = "Analyze the following financial data: Swift payment of $150,000 to Vendor ABC dated 2026-01-15, budget allocated $120,000. Insurance policy renewal due 2026-01-10 but not yet processed. Broker report shows Task C review pending for 8 days."
+
+      const result = await callAIAgent(message, WORKFLOW_COORDINATOR_ID)
 
       if (result.success && result.response.status === 'success') {
         setWorkflowResponse(result.response.result as WorkflowCoordinatorResult)
@@ -505,7 +500,7 @@ export default function Home() {
                 <div className="flex gap-3">
                   <Button
                     variant="outline"
-                    onClick={() => setAnalysisInput('')}
+                    onClick={() => setActiveTab('data-sources')}
                     className="border-white/10 text-white hover:bg-white/5"
                   >
                     <Upload className="h-4 w-4 mr-2" />
