@@ -1,0 +1,76 @@
+{
+  "agent_name": "Workflow Monitoring Coordinator",
+  "agent_id": "696f93f13bd35d7a6606c88c",
+  "test_message": "Analyze the following financial data: Swift payment of $150,000 to Vendor ABC dated 2026-01-15, budget allocated $120,000. Insurance policy renewal due 2026-01-10 but not yet processed. Broker report shows Task C review pending for 8 days.",
+  "expected_purpose": "manager",
+  "timestamp": "2026-01-20T14:45:11.442912",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "workflow_summary": {
+        "total_records_processed": 3,
+        "data_quality_issues": 3,
+        "compliance_violations": 3,
+        "total_flags": 3,
+        "high_priority_flags": 2
+      },
+      "prioritized_flags": [
+        {
+          "flag_id": "flag-002",
+          "category": "Insurance",
+          "severity": "High",
+          "title": "Overdue/Lapsed Insurance Renewal",
+          "description": "Insurance policy was due for renewal on 2026-01-10 but the renewal has not been processed, potentially resulting in lapses of coverage.",
+          "source": "Compliance",
+          "priority_score": 100,
+          "recommended_action": "Immediate escalation to risk management and insurance broker. Expedite insurance policy renewal and implement automated renewal tracking.",
+          "assigned_to": "Risk & Insurance Team"
+        },
+        {
+          "flag_id": "flag-001",
+          "category": "Budget",
+          "severity": "High",
+          "title": "Budget Overrun on Swift Payment",
+          "description": "A swift payment of $150,000 was executed against an approved budget of $120,000, resulting in a $30,000 overrun.",
+          "source": "Compliance",
+          "priority_score": 95,
+          "recommended_action": "Immediate investigation and justification for overrun. Strengthen approval workflow and integrate automated alerts.",
+          "assigned_to": "Finance Department"
+        },
+        {
+          "flag_id": "flag-003",
+          "category": "Operational",
+          "severity": "Medium",
+          "title": "SLA Breach\u2014Broker Report Task C Review Pending",
+          "description": "Task C within the broker report review process has been pending for 8 days, exceeding the operational SLA for task completion.",
+          "source": "Compliance",
+          "priority_score": 72,
+          "recommended_action": "Reassign or escalate Task C review. Review and optimize workload allocation; automate SLA tracking.",
+          "assigned_to": "Operations Team Lead"
+        }
+      ],
+      "dashboard_insights": {
+        "critical_alerts": 2,
+        "trends": "Multiple high-severity, time-sensitive compliance violations\u2014repeat issues in budget controls and insurance renewals indicate systemic process risk.",
+        "top_risk_areas": [
+          "Insurance",
+          "Budget"
+        ],
+        "recommended_focus": "Immediate attention required for insurance renewal lapse and over-budget payment. Escalate both to respective senior teams."
+      },
+      "sub_agent_results": {
+        "data_validation": "3 records processed. All had data quality or integrity issues (out-of-range amounts, overdue renewal, SLA-breached task). Recommendations included automating data entry controls and deadline alerts.",
+        "compliance_analysis": "3 compliance violations detected: budget overrun, insurance lapse, and SLA breach. All compared against benchmarks showed above-average risk and non-compliance.",
+        "flag_classification": "2 high-severity flags (insurance lapse, budget overrun), 1 medium (SLA breach). Root causes linked to manual processes, poor controls, and lack of escalation."
+      }
+    },
+    "metadata": {
+      "agent_name": "Workflow Monitoring Coordinator",
+      "timestamp": "2024-06-25T18:00:36Z",
+      "workflow_execution_time": "9912"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"workflow_summary\": {\n      \"total_records_processed\": 3,\n      \"data_quality_issues\": 3,\n      \"compliance_violations\": 3,\n      \"total_flags\": 3,\n      \"high_priority_flags\": 2\n    },\n    \"prioritized_flags\": [\n      {\n        \"flag_id\": \"flag-002\",\n        \"category\": \"Insurance\",\n        \"severity\": \"High\",\n        \"title\": \"Overdue/Lapsed Insurance Renewal\",\n        \"description\": \"Insurance policy was due for renewal on 2026-01-10 but the renewal has not been processed, potentially resulting in lapses of coverage.\",\n        \"source\": \"Compliance\",\n        \"priority_score\": 100,\n        \"recommended_action\": \"Immediate escalation to risk management and insurance broker. Expedite insurance policy renewal and implement automated renewal tracking.\",\n        \"assigned_to\": \"Risk & Insurance Team\"\n      },\n      {\n        \"flag_id\": \"flag-001\",\n        \"category\": \"Budget\",\n        \"severity\": \"High\",\n        \"title\": \"Budget Overrun on Swift Payment\",\n        \"description\": \"A swift payment of $150,000 was executed against an approved budget of $120,000, resulting in a $30,000 overrun.\",\n        \"source\": \"Compliance\",\n        \"priority_score\": 95,\n        \"recommended_action\": \"Immediate investigation and justification for overrun. Strengthen approval workflow and integrate automated alerts.\",\n        \"assigned_to\": \"Finance Department\"\n      },\n      {\n        \"flag_id\": \"flag-003\",\n        \"category\": \"Operational\",\n        \"severity\": \"Medium\",\n        \"title\": \"SLA Breach\u2014Broker Report Task C Review Pending\",\n        \"description\": \"Task C within the broker report review process has been pending for 8 days, exceeding the operational SLA for task completion.\",\n        \"source\": \"Compliance\",\n        \"priority_score\": 72,\n        \"recommended_action\": \"Reassign or escalate Task C review. Review and optimize workload allocation; automate SLA tracking.\",\n        \"assigned_to\": \"Operations Team Lead\"\n      }\n    ],\n    \"dashboard_insights\": {\n      \"critical_alerts\": 2,\n      \"trends\": \"Multiple high-severity, time-sensitive compliance violations\u2014repeat issues in budget controls and insurance renewals indicate systemic process risk.\",\n      \"top_risk_areas\": [\"Insurance\", \"Budget\"],\n      \"recommended_focus\": \"Immediate attention required for insurance renewal lapse and over-budget payment. Escalate both to respective senior teams.\"\n    },\n    \"sub_agent_results\": {\n      \"data_validation\": \"3 records processed. All had data quality or integrity issues (out-of-range amounts, overdue renewal, SLA-breached task). Recommendations included automating data entry controls and deadline alerts.\",\n      \"compliance_analysis\": \"3 compliance violations detected: budget overrun, insurance lapse, and SLA breach. All compared against benchmarks showed above-average risk and non-compliance.\",\n      \"flag_classification\": \"2 high-severity flags (insurance lapse, budget overrun), 1 medium (SLA breach). Root causes linked to manual processes, poor controls, and lack of escalation.\"\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"Workflow Monitoring Coordinator\",\n    \"timestamp\": \"2024-06-25T18:00:36Z\",\n    \"workflow_execution_time\": \"9912\"\n  }\n}"
+}

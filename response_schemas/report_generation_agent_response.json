@@ -1,0 +1,282 @@
+{
+  "agent_name": "Report Generation Agent",
+  "agent_id": "696f942ab50537828e0b235b",
+  "agent_purpose": "recommendation",
+  "description": "Generates weekly trend reports with flag summaries, KPI tracking, and stakeholder action items; sends via Gmail",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "report_metadata": {
+        "report_id": "string",
+        "reporting_period": "string",
+        "generated_at": "string",
+        "recipients": [
+          "string"
+        ]
+      },
+      "executive_summary": {
+        "total_flags": "number",
+        "high_priority_flags": "number",
+        "trend": "string",
+        "key_highlights": [
+          "string"
+        ],
+        "critical_actions_required": [
+          "string"
+        ]
+      },
+      "weekly_trends": {
+        "flag_volume_trend": "string",
+        "category_breakdown": {
+          "Budget": "number",
+          "Insurance": "number",
+          "Operational": "number"
+        },
+        "severity_distribution": {
+          "High": "number",
+          "Medium": "number",
+          "Low": "number"
+        }
+      },
+      "stakeholder_summaries": [
+        {
+          "stakeholder": "string",
+          "assigned_flags": "number",
+          "high_priority": "number",
+          "action_items": [
+            "string"
+          ]
+        }
+      ],
+      "kpi_tracking": {
+        "data_quality_score": "number",
+        "compliance_rate": "number",
+        "average_resolution_time": "string",
+        "flags_resolved": "number",
+        "flags_pending": "number"
+      },
+      "recommendations": [
+        "string"
+      ],
+      "email_status": {
+        "sent": "boolean",
+        "sent_to": [
+          "any"
+        ],
+        "send_time": "null"
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "report_metadata": {
+        "report_id": "WEEKLY-FIN-20260120-001",
+        "reporting_period": "2026-01-14 to 2026-01-20",
+        "generated_at": "2026-01-21T09:01:00Z",
+        "recipients": [
+          "finance.lead@example.com",
+          "ops.manager@example.com",
+          "marketing.head@example.com"
+        ]
+      },
+      "executive_summary": {
+        "total_flags": 35,
+        "high_priority_flags": 12,
+        "trend": "declining",
+        "key_highlights": [
+          "Flag volume down 15% vs previous week.",
+          "Majority of high severity flags related to Budget overages in Marketing.",
+          "Insurance renewal delays continue, three high severity flags remain open.",
+          "Resolution rate improved (22 resolved flags)."
+        ],
+        "critical_actions_required": [
+          "Immediate review of Marketing department spending with Finance.",
+          "Escalate Insurance renewal process to prevent coverage gaps."
+        ]
+      },
+      "weekly_trends": {
+        "flag_volume_trend": "Decrease in total and high severity flags; most significant drop observed in Budget category.",
+        "category_breakdown": {
+          "Budget": 8,
+          "Insurance": 3,
+          "Operational": 1
+        },
+        "severity_distribution": {
+          "High": 12,
+          "Medium": 18,
+          "Low": 5
+        }
+      },
+      "stakeholder_summaries": [
+        {
+          "stakeholder": "Marketing",
+          "assigned_flags": 10,
+          "high_priority": 7,
+          "action_items": [
+            "Submit detailed expenditure report for flagged campaigns.",
+            "Schedule meeting with Finance to review escalated flag items."
+          ]
+        },
+        {
+          "stakeholder": "Finance",
+          "assigned_flags": 9,
+          "high_priority": 4,
+          "action_items": [
+            "Audit flagged transactions from Marketing.",
+            "Update budget tracking processes to improve early detection."
+          ]
+        },
+        {
+          "stakeholder": "Operations",
+          "assigned_flags": 4,
+          "high_priority": 1,
+          "action_items": [
+            "Investigate single high-priority operational exception.",
+            "Implement resolution feedback loop."
+          ]
+        },
+        {
+          "stakeholder": "Insurance Team",
+          "assigned_flags": 3,
+          "high_priority": 3,
+          "action_items": [
+            "Escalate communication with broker.",
+            "Provide update to Finance and Ops by 2026-01-22."
+          ]
+        }
+      ],
+      "kpi_tracking": {
+        "data_quality_score": 93,
+        "compliance_rate": 97,
+        "average_resolution_time": "2.3 days",
+        "flags_resolved": 22,
+        "flags_pending": 13
+      },
+      "recommendations": [
+        "Implement pre-approval controls for high-value Marketing spend.",
+        "Develop contingency plan for insurance renewal cycles.",
+        "Increase training on rapid flag resolution for all teams."
+      ],
+      "email_status": {
+        "sent": false,
+        "sent_to": [],
+        "send_time": null
+      }
+    },
+    "metadata": {
+      "agent_name": "Report Generation Agent",
+      "timestamp": "2026-01-21T09:01:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-20T14:46:32.229251",
+  "test_message_used": "Provide sample recommendations for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "report_metadata": {
+        "report_id": "WEEKLY-FIN-20260120-001",
+        "reporting_period": "2026-01-14 to 2026-01-20",
+        "generated_at": "2026-01-21T09:01:00Z",
+        "recipients": [
+          "finance.lead@example.com",
+          "ops.manager@example.com",
+          "marketing.head@example.com"
+        ]
+      },
+      "executive_summary": {
+        "total_flags": 35,
+        "high_priority_flags": 12,
+        "trend": "declining",
+        "key_highlights": [
+          "Flag volume down 15% vs previous week.",
+          "Majority of high severity flags related to Budget overages in Marketing.",
+          "Insurance renewal delays continue, three high severity flags remain open.",
+          "Resolution rate improved (22 resolved flags)."
+        ],
+        "critical_actions_required": [
+          "Immediate review of Marketing department spending with Finance.",
+          "Escalate Insurance renewal process to prevent coverage gaps."
+        ]
+      },
+      "weekly_trends": {
+        "flag_volume_trend": "Decrease in total and high severity flags; most significant drop observed in Budget category.",
+        "category_breakdown": {
+          "Budget": 8,
+          "Insurance": 3,
+          "Operational": 1
+        },
+        "severity_distribution": {
+          "High": 12,
+          "Medium": 18,
+          "Low": 5
+        }
+      },
+      "stakeholder_summaries": [
+        {
+          "stakeholder": "Marketing",
+          "assigned_flags": 10,
+          "high_priority": 7,
+          "action_items": [
+            "Submit detailed expenditure report for flagged campaigns.",
+            "Schedule meeting with Finance to review escalated flag items."
+          ]
+        },
+        {
+          "stakeholder": "Finance",
+          "assigned_flags": 9,
+          "high_priority": 4,
+          "action_items": [
+            "Audit flagged transactions from Marketing.",
+            "Update budget tracking processes to improve early detection."
+          ]
+        },
+        {
+          "stakeholder": "Operations",
+          "assigned_flags": 4,
+          "high_priority": 1,
+          "action_items": [
+            "Investigate single high-priority operational exception.",
+            "Implement resolution feedback loop."
+          ]
+        },
+        {
+          "stakeholder": "Insurance Team",
+          "assigned_flags": 3,
+          "high_priority": 3,
+          "action_items": [
+            "Escalate communication with broker.",
+            "Provide update to Finance and Ops by 2026-01-22."
+          ]
+        }
+      ],
+      "kpi_tracking": {
+        "data_quality_score": 93,
+        "compliance_rate": 97,
+        "average_resolution_time": "2.3 days",
+        "flags_resolved": 22,
+        "flags_pending": 13
+      },
+      "recommendations": [
+        "Implement pre-approval controls for high-value Marketing spend.",
+        "Develop contingency plan for insurance renewal cycles.",
+        "Increase training on rapid flag resolution for all teams."
+      ],
+      "email_status": {
+        "sent": false,
+        "sent_to": [],
+        "send_time": null
+      }
+    },
+    "metadata": {
+      "agent_name": "Report Generation Agent",
+      "timestamp": "2026-01-21T09:01:00Z"
+    }
+  },
+  "test_passed": true
+}

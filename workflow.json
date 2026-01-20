@@ -1,0 +1,172 @@
+{
+  "workflow_name": "AI Financial Workflow Monitoring and Alert Agent (AIF-MAA)",
+  "version": "1.0.0",
+  "created_at": "2026-01-20T00:00:00Z",
+  "nodes": [
+    {
+      "id": "data_input",
+      "type": "Input",
+      "label": "Data Feed / Dashboard Trigger",
+      "nodeCategory": "input",
+      "position": {"x": 100, "y": 100}
+    },
+    {
+      "id": "workflow_coordinator",
+      "type": "Agent",
+      "label": "Workflow Monitoring Coordinator",
+      "nodeCategory": "agent",
+      "agent_id": "696f93f13bd35d7a6606c88c",
+      "agent_type": "manager",
+      "position": {"x": 400, "y": 100}
+    },
+    {
+      "id": "data_validation",
+      "type": "Agent",
+      "label": "Data Ingestion & Validation Agent",
+      "nodeCategory": "agent",
+      "agent_id": "696f93953bd35d7a6606c885",
+      "agent_type": "subagent",
+      "position": {"x": 700, "y": 50}
+    },
+    {
+      "id": "compliance_analysis",
+      "type": "Agent",
+      "label": "Compliance Analysis Agent",
+      "nodeCategory": "agent",
+      "agent_id": "696f93b4b50537828e0b233f",
+      "agent_type": "subagent",
+      "has_knowledge_base": true,
+      "position": {"x": 700, "y": 150}
+    },
+    {
+      "id": "flag_classification",
+      "type": "Agent",
+      "label": "Flag Classification Agent",
+      "nodeCategory": "agent",
+      "agent_id": "696f93d1b50537828e0b2349",
+      "agent_type": "subagent",
+      "position": {"x": 700, "y": 250}
+    },
+    {
+      "id": "workflow_output",
+      "type": "Output",
+      "label": "Prioritized Flags Output",
+      "nodeCategory": "end",
+      "position": {"x": 1000, "y": 150}
+    },
+    {
+      "id": "report_input",
+      "type": "Input",
+      "label": "Report Trigger / Schedule",
+      "nodeCategory": "input",
+      "position": {"x": 100, "y": 400}
+    },
+    {
+      "id": "report_generation",
+      "type": "Agent",
+      "label": "Report Generation Agent",
+      "nodeCategory": "agent",
+      "agent_id": "696f942ab50537828e0b235b",
+      "agent_type": "independent",
+      "position": {"x": 400, "y": 400}
+    },
+    {
+      "id": "report_output",
+      "type": "Output",
+      "label": "Email Report",
+      "nodeCategory": "end",
+      "position": {"x": 700, "y": 400}
+    }
+  ],
+  "edges": [
+    {"source": "data_input", "target": "workflow_coordinator"},
+    {"source": "workflow_coordinator", "target": "data_validation"},
+    {"source": "workflow_coordinator", "target": "compliance_analysis"},
+    {"source": "workflow_coordinator", "target": "flag_classification"},
+    {"source": "data_validation", "target": "workflow_output"},
+    {"source": "compliance_analysis", "target": "workflow_output"},
+    {"source": "flag_classification", "target": "workflow_output"},
+    {"source": "report_input", "target": "report_generation"},
+    {"source": "report_generation", "target": "report_output"}
+  ],
+  "agents": [
+    {
+      "agent_id": "696f93f13bd35d7a6606c88c",
+      "name": "Workflow Monitoring Coordinator",
+      "type": "manager",
+      "description": "Orchestrates data validation, compliance analysis, and flag classification workflow; aggregates results into prioritized flag output for dashboard display",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.2,
+      "top_p": 1,
+      "managed_agents": [
+        {
+          "id": "696f93953bd35d7a6606c885",
+          "name": "Data Ingestion & Validation Agent"
+        },
+        {
+          "id": "696f93b4b50537828e0b233f",
+          "name": "Compliance Analysis Agent"
+        },
+        {
+          "id": "696f93d1b50537828e0b2349",
+          "name": "Flag Classification Agent"
+        }
+      ]
+    },
+    {
+      "agent_id": "696f93953bd35d7a6606c885",
+      "name": "Data Ingestion & Validation Agent",
+      "type": "subagent",
+      "description": "Validates incoming data from Swift, accounting ledger, insurance PDFs, and broker reports; normalizes formats, checks completeness, flags data quality issues",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.1,
+      "top_p": 1,
+      "data_sources": ["Swift API", "Accounting Ledger API", "PDF Parser (Custom)", "Broker Report API"]
+    },
+    {
+      "agent_id": "696f93b4b50537828e0b233f",
+      "name": "Compliance Analysis Agent",
+      "type": "subagent",
+      "description": "Applies Budget/Payment rules, Insurance Compliance rules, and Operational Bottleneck rules against validated data; cross-references industry benchmarks for validation",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.2,
+      "top_p": 1,
+      "has_knowledge_base": true,
+      "knowledge_base": {
+        "rag_id": "696f93a342263af0ef9d2b5a",
+        "rag_name": "compliancerulesknowledgebaseru1x",
+        "name": "Compliance Rules Knowledge Base"
+      }
+    },
+    {
+      "agent_id": "696f93d1b50537828e0b2349",
+      "name": "Flag Classification Agent",
+      "type": "subagent",
+      "description": "Categorizes detected anomalies by type (Budget, Insurance, Operational), assigns severity (High/Medium/Low), and enriches flags with root cause analysis",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.3,
+      "top_p": 1
+    },
+    {
+      "agent_id": "696f942ab50537828e0b235b",
+      "name": "Report Generation Agent",
+      "type": "independent",
+      "description": "Compiles weekly trend analysis, flag summaries by stakeholder, KPI tracking, and generates formatted reports for email distribution",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.4,
+      "top_p": 1,
+      "tools": [
+        {
+          "tool_name": "gmail",
+          "tool_source": "composio",
+          "action_names": ["GMAIL_SEND_EMAIL"]
+        }
+      ]
+    }
+  ]
+}

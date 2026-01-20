@@ -1,0 +1,130 @@
+{
+  "agent_name": "Flag Classification Agent",
+  "agent_id": "696f93d1b50537828e0b2349",
+  "test_message": "Classify these anomalies: 1) Budget exceeded by 25% ($30,000 overage), 2) Insurance renewal 5 days overdue, 3) Task C review delayed 8 days. Assign severity and categorize by type with root cause.",
+  "expected_purpose": "assistant",
+  "timestamp": "2026-01-20T14:45:45.589516",
+  "is_valid_json": true,
+  "validation_errors": [],
+  "actual_response": {
+    "status": "success",
+    "result": {
+      "classification_summary": {
+        "total_flags": 3,
+        "high_severity": 1,
+        "medium_severity": 1,
+        "low_severity": 1
+      },
+      "classified_flags": [
+        {
+          "flag_id": "1",
+          "category": "Budget",
+          "severity": "High",
+          "title": "Budget Exceeded by 25% ($30,000 Overage)",
+          "description": "The project budget was exceeded by 25%, resulting in a $30,000 overage.",
+          "root_cause": {
+            "primary_factor": "Ineffective budget controls and inaccurate forecasting.",
+            "contributing_factors": [
+              "Unanticipated project expenses",
+              "Lack of regular budget monitoring",
+              "Potential scope creep or changes in requirements"
+            ],
+            "systemic_issues": [
+              "Weak financial oversight process",
+              "Inconsistent budget review practices"
+            ],
+            "historical_pattern": "Previous projects have also experienced moderate overspending, though not at this magnitude."
+          },
+          "impact": {
+            "financial": "Significant overrun of allocated funds ($30,000)",
+            "operational": "May require reprioritization or reduction of project scope; risk of funding shortfalls.",
+            "compliance": "Potential breach of client or grant funding agreements, raising regulatory and audit risks."
+          },
+          "recommended_actions": [
+            "Implement stricter budget tracking and regular variance analyses.",
+            "Review all unplanned expenses and categorize root causes.",
+            "Strengthen change control processes for scope modifications.",
+            "Conduct post-mortem to prevent recurrence."
+          ],
+          "priority_score": 95
+        },
+        {
+          "flag_id": "2",
+          "category": "Insurance",
+          "severity": "Medium",
+          "title": "Insurance Renewal 5 Days Overdue",
+          "description": "Key insurance policy renewal has not been completed on time and is 5 days overdue, creating a temporary coverage gap.",
+          "root_cause": {
+            "primary_factor": "Delayed action on renewal reminders.",
+            "contributing_factors": [
+              "Manual process dependencies",
+              "Possible lack of automated alerts",
+              "Resource bottlenecks in administration"
+            ],
+            "systemic_issues": [
+              "Reactive policy management approach",
+              "Insufficient automation for compliance tasks"
+            ],
+            "historical_pattern": "Similar minor delays have occurred in prior renewals, typically resolved within one week."
+          },
+          "impact": {
+            "financial": "Potential liability exposure if incident occurs during gap.",
+            "operational": "Business operations at risk if proof of insurance is required.",
+            "compliance": "Possible non-compliance with contractual or regulatory requirements."
+          },
+          "recommended_actions": [
+            "Renew insurance immediately and confirm reinstatement of coverage.",
+            "Implement automated reminders and escalation for renewals.",
+            "Review administrative workload and allocate backup resources."
+          ],
+          "priority_score": 65
+        },
+        {
+          "flag_id": "3",
+          "category": "Operational",
+          "severity": "Low",
+          "title": "Task C Review Delayed by 8 Days",
+          "description": "The review for Task C was delayed by 8 days, impacting project timelines.",
+          "root_cause": {
+            "primary_factor": "Resource availability issues.",
+            "contributing_factors": [
+              "Competing priorities for reviewers",
+              "Insufficient advance scheduling",
+              "Unclear ownership or process steps"
+            ],
+            "systemic_issues": [
+              "Frequent task review backlogs",
+              "Lack of proactive workflow management"
+            ],
+            "historical_pattern": "Task reviews are often delayed by a few days, although typically not to this extent.",
+            "potential_cascading_effects": "If such delays accumulate, overall project delivery can slip."
+          },
+          "impact": {
+            "financial": "Minor cost impact from schedule slippage.",
+            "operational": "Potential cascading delays on dependent tasks.",
+            "compliance": "No immediate compliance issues."
+          },
+          "recommended_actions": [
+            "Set clear deadlines and assign task review owners.",
+            "Implement workflow automation where possible.",
+            "Monitor review timelines and follow up on delays."
+          ],
+          "priority_score": 35
+        }
+      ],
+      "aggregated_insights": {
+        "most_common_category": "No dominant category (one per type)",
+        "trend_analysis": "Current anomalies are distributed across budget, insurance, and operational domains with only the budget issue posing a high immediate risk.",
+        "systemic_patterns": [
+          "Lack of strong proactive controls across financial and compliance processes.",
+          "Recurring minor delays indicating potential workflow bottlenecks."
+        ]
+      }
+    },
+    "metadata": {
+      "agent_name": "Flag Classification Agent",
+      "timestamp": "2024-06-18T13:54:00Z"
+    }
+  },
+  "raw_response": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"classification_summary\": {\n      \"total_flags\": 3,\n      \"high_severity\": 1,\n      \"medium_severity\": 1,\n      \"low_severity\": 1\n    },\n    \"classified_flags\": [\n      {\n        \"flag_id\": \"1\",\n        \"category\": \"Budget\",\n        \"severity\": \"High\",\n        \"title\": \"Budget Exceeded by 25% ($30,000 Overage)\",\n        \"description\": \"The project budget was exceeded by 25%, resulting in a $30,000 overage.\",\n        \"root_cause\": {\n          \"primary_factor\": \"Ineffective budget controls and inaccurate forecasting.\",\n          \"contributing_factors\": [\n            \"Unanticipated project expenses\",\n            \"Lack of regular budget monitoring\",\n            \"Potential scope creep or changes in requirements\"\n          ],\n          \"systemic_issues\": [\n            \"Weak financial oversight process\",\n            \"Inconsistent budget review practices\"\n          ],\n          \"historical_pattern\": \"Previous projects have also experienced moderate overspending, though not at this magnitude.\"\n        },\n        \"impact\": {\n          \"financial\": \"Significant overrun of allocated funds ($30,000)\",\n          \"operational\": \"May require reprioritization or reduction of project scope; risk of funding shortfalls.\",\n          \"compliance\": \"Potential breach of client or grant funding agreements, raising regulatory and audit risks.\"\n        },\n        \"recommended_actions\": [\n          \"Implement stricter budget tracking and regular variance analyses.\",\n          \"Review all unplanned expenses and categorize root causes.\",\n          \"Strengthen change control processes for scope modifications.\",\n          \"Conduct post-mortem to prevent recurrence.\"\n        ],\n        \"priority_score\": 95\n      },\n      {\n        \"flag_id\": \"2\",\n        \"category\": \"Insurance\",\n        \"severity\": \"Medium\",\n        \"title\": \"Insurance Renewal 5 Days Overdue\",\n        \"description\": \"Key insurance policy renewal has not been completed on time and is 5 days overdue, creating a temporary coverage gap.\",\n        \"root_cause\": {\n          \"primary_factor\": \"Delayed action on renewal reminders.\",\n          \"contributing_factors\": [\n            \"Manual process dependencies\",\n            \"Possible lack of automated alerts\",\n            \"Resource bottlenecks in administration\"\n          ],\n          \"systemic_issues\": [\n            \"Reactive policy management approach\",\n            \"Insufficient automation for compliance tasks\"\n          ],\n          \"historical_pattern\": \"Similar minor delays have occurred in prior renewals, typically resolved within one week.\"\n        },\n        \"impact\": {\n          \"financial\": \"Potential liability exposure if incident occurs during gap.\",\n          \"operational\": \"Business operations at risk if proof of insurance is required.\",\n          \"compliance\": \"Possible non-compliance with contractual or regulatory requirements.\"\n        },\n        \"recommended_actions\": [\n          \"Renew insurance immediately and confirm reinstatement of coverage.\",\n          \"Implement automated reminders and escalation for renewals.\",\n          \"Review administrative workload and allocate backup resources.\"\n        ],\n        \"priority_score\": 65\n      },\n      {\n        \"flag_id\": \"3\",\n        \"category\": \"Operational\",\n        \"severity\": \"Low\",\n        \"title\": \"Task C Review Delayed by 8 Days\",\n        \"description\": \"The review for Task C was delayed by 8 days, impacting project timelines.\",\n        \"root_cause\": {\n          \"primary_factor\": \"Resource availability issues.\",\n          \"contributing_factors\": [\n            \"Competing priorities for reviewers\",\n            \"Insufficient advance scheduling\",\n            \"Unclear ownership or process steps\"\n          ],\n          \"systemic_issues\": [\n            \"Frequent task review backlogs\",\n            \"Lack of proactive workflow management\"\n          ],\n          \"historical_pattern\": \"Task reviews are often delayed by a few days, although typically not to this extent.\",\n          \"potential_cascading_effects\": \"If such delays accumulate, overall project delivery can slip.\"\n        },\n        \"impact\": {\n          \"financial\": \"Minor cost impact from schedule slippage.\",\n          \"operational\": \"Potential cascading delays on dependent tasks.\",\n          \"compliance\": \"No immediate compliance issues.\"\n        },\n        \"recommended_actions\": [\n          \"Set clear deadlines and assign task review owners.\",\n          \"Implement workflow automation where possible.\",\n          \"Monitor review timelines and follow up on delays.\"\n        ],\n        \"priority_score\": 35\n      }\n    ],\n    \"aggregated_insights\": {\n      \"most_common_category\": \"No dominant category (one per type)\",\n      \"trend_analysis\": \"Current anomalies are distributed across budget, insurance, and operational domains with only the budget issue posing a high immediate risk.\",\n      \"systemic_patterns\": [\n        \"Lack of strong proactive controls across financial and compliance processes.\",\n        \"Recurring minor delays indicating potential workflow bottlenecks.\"\n      ]\n    }\n  },\n  \"metadata\": {\n    \"agent_name\": \"Flag Classification Agent\",\n    \"timestamp\": \"2024-06-18T13:54:00Z\"\n  }\n}"
+}

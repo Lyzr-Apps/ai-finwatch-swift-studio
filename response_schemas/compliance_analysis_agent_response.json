@@ -1,0 +1,162 @@
+{
+  "agent_name": "Compliance Analysis Agent",
+  "agent_id": "696f93b4b50537828e0b233f",
+  "agent_purpose": "analyzer",
+  "description": "Analyzes validated data against compliance rules and industry benchmarks; returns violations, benchmark analysis, and recommendations",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "compliance_summary": {
+        "total_checks_performed": "number",
+        "passed": "number",
+        "failed": "number",
+        "warnings": "number"
+      },
+      "violations": [
+        {
+          "category": "string",
+          "rule_violated": "string",
+          "severity": "string",
+          "description": "string",
+          "affected_entities": [
+            "string"
+          ],
+          "benchmark_comparison": "string"
+        }
+      ],
+      "benchmark_analysis": {
+        "industry_average": "string",
+        "current_performance": "string",
+        "variance_percentage": "number",
+        "trend": "string"
+      },
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "compliance_summary": {
+        "total_checks_performed": 3,
+        "passed": 0,
+        "failed": 3,
+        "warnings": 0
+      },
+      "violations": [
+        {
+          "category": "Budget/Payment",
+          "rule_violated": "Budget Overage Threshold",
+          "severity": "high",
+          "description": "Payment of $150,000 exceeds the allocated budget of $120,000 by 25%, violating the spending cap policy.",
+          "affected_entities": [
+            "Payment Transaction (ID: unknown)"
+          ],
+          "benchmark_comparison": "Industry average budget overage tolerance is commonly set at 5-10%; current performance (25% over) significantly exceeds this."
+        },
+        {
+          "category": "Insurance",
+          "rule_violated": "Timely Policy Renewal Requirement",
+          "severity": "high",
+          "description": "Insurance policy renewal is 5 days overdue, breaching compliance rules that require timely renewal to avoid lapses in coverage.",
+          "affected_entities": [
+            "Insurance Policy (ID: unknown)"
+          ],
+          "benchmark_comparison": "Best practice is to renew insurance policies before expiration; industry benchmark is a 1-day grace period, not 5 days or more overdue."
+        },
+        {
+          "category": "Operational",
+          "rule_violated": "Broker Task Completion SLA",
+          "severity": "medium",
+          "description": "Broker Task C has been pending for 8 days, exceeding the operational threshold of 5 days, indicating a process bottleneck.",
+          "affected_entities": [
+            "Broker Task C"
+          ],
+          "benchmark_comparison": "Industry standard for similar broker task SLAs is 3-5 days; the delay surpasses industry benchmarks."
+        }
+      ],
+      "benchmark_analysis": {
+        "industry_average": "Budget overage allowance: 5-10%; Insurance renewal grace period: 1 day; Broker task SLA: 3-5 days",
+        "current_performance": "Budget overage: 25%; Insurance overdue: 5 days; Broker task pending: 8 days",
+        "variance_percentage": 15,
+        "trend": "declining"
+      },
+      "recommendations": [
+        "Implement stricter budget monitoring controls and real-time alerts to prevent overspending.",
+        "Enforce automated insurance renewal reminders and escalation protocols to ensure compliance.",
+        "Review and optimize broker process workflow to address operational delays and meet industry benchmarks."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Compliance Analysis Agent",
+      "timestamp": "2024-06-20T14:28:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-20T14:45:27.255694",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "compliance_summary": {
+        "total_checks_performed": 3,
+        "passed": 0,
+        "failed": 3,
+        "warnings": 0
+      },
+      "violations": [
+        {
+          "category": "Budget/Payment",
+          "rule_violated": "Budget Overage Threshold",
+          "severity": "high",
+          "description": "Payment of $150,000 exceeds the allocated budget of $120,000 by 25%, violating the spending cap policy.",
+          "affected_entities": [
+            "Payment Transaction (ID: unknown)"
+          ],
+          "benchmark_comparison": "Industry average budget overage tolerance is commonly set at 5-10%; current performance (25% over) significantly exceeds this."
+        },
+        {
+          "category": "Insurance",
+          "rule_violated": "Timely Policy Renewal Requirement",
+          "severity": "high",
+          "description": "Insurance policy renewal is 5 days overdue, breaching compliance rules that require timely renewal to avoid lapses in coverage.",
+          "affected_entities": [
+            "Insurance Policy (ID: unknown)"
+          ],
+          "benchmark_comparison": "Best practice is to renew insurance policies before expiration; industry benchmark is a 1-day grace period, not 5 days or more overdue."
+        },
+        {
+          "category": "Operational",
+          "rule_violated": "Broker Task Completion SLA",
+          "severity": "medium",
+          "description": "Broker Task C has been pending for 8 days, exceeding the operational threshold of 5 days, indicating a process bottleneck.",
+          "affected_entities": [
+            "Broker Task C"
+          ],
+          "benchmark_comparison": "Industry standard for similar broker task SLAs is 3-5 days; the delay surpasses industry benchmarks."
+        }
+      ],
+      "benchmark_analysis": {
+        "industry_average": "Budget overage allowance: 5-10%; Insurance renewal grace period: 1 day; Broker task SLA: 3-5 days",
+        "current_performance": "Budget overage: 25%; Insurance overdue: 5 days; Broker task pending: 8 days",
+        "variance_percentage": 15,
+        "trend": "declining"
+      },
+      "recommendations": [
+        "Implement stricter budget monitoring controls and real-time alerts to prevent overspending.",
+        "Enforce automated insurance renewal reminders and escalation protocols to ensure compliance.",
+        "Review and optimize broker process workflow to address operational delays and meet industry benchmarks."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Compliance Analysis Agent",
+      "timestamp": "2024-06-20T14:28:00Z"
+    }
+  },
+  "test_passed": true
+}

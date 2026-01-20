@@ -1,0 +1,200 @@
+{
+  "agent_name": "Data Ingestion & Validation Agent",
+  "agent_id": "696f93953bd35d7a6606c885",
+  "agent_purpose": "parser",
+  "description": "Validates and normalizes data from Swift, accounting ledger, insurance PDFs, and broker reports; returns validation summary and data quality issues",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "validation_summary": {
+        "total_records_processed": "number",
+        "valid_records": "number",
+        "invalid_records": "number",
+        "warnings": "number"
+      },
+      "data_quality_issues": [
+        {
+          "source": "string",
+          "issue_type": "string",
+          "severity": "string",
+          "description": "string",
+          "affected_records": "number"
+        }
+      ],
+      "normalized_data": {
+        "swift_transactions": [
+          {
+            "transaction_id": "string",
+            "amount_usd": "number",
+            "date": "string",
+            "vendor": "string"
+          }
+        ],
+        "ledger_entries": [
+          {
+            "entry_id": "string",
+            "budget_code": "string",
+            "allocated_amount_usd": "number"
+          }
+        ],
+        "insurance_records": [
+          {
+            "policy_number": "string",
+            "renewal_date": "string",
+            "status": "string"
+          }
+        ],
+        "broker_reports": [
+          "any"
+        ]
+      },
+      "recommendations": [
+        "string"
+      ]
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "validation_summary": {
+        "total_records_processed": 3,
+        "valid_records": 1,
+        "invalid_records": 2,
+        "warnings": 1
+      },
+      "data_quality_issues": [
+        {
+          "source": "Accounting Ledger",
+          "issue_type": "out_of_range",
+          "severity": "high",
+          "description": "Ledger allocated amount ($120,000) is less than Swift payment amount ($150,000), indicating a $30,000 discrepancy.",
+          "affected_records": 1
+        },
+        {
+          "source": "Insurance PDF",
+          "issue_type": "missing_field",
+          "severity": "medium",
+          "description": "Insurance policy record missing premium and coverage amount fields, which are required for completeness.",
+          "affected_records": 1
+        },
+        {
+          "source": "Swift API | Insurance PDF",
+          "issue_type": "inconsistency",
+          "severity": "low",
+          "description": "Insurance policy renewal date (2026-01-10) is prior to the Swift payment date (2026-01-15); potential mismatch in transaction-related timing.",
+          "affected_records": 1
+        }
+      ],
+      "normalized_data": {
+        "swift_transactions": [
+          {
+            "transaction_id": "PAY-2026-001",
+            "amount_usd": 150000,
+            "date": "2026-01-15",
+            "vendor": "ABC Corp."
+          }
+        ],
+        "ledger_entries": [
+          {
+            "entry_id": "LED-5432",
+            "budget_code": "MKT-Q1",
+            "allocated_amount_usd": 120000
+          }
+        ],
+        "insurance_records": [
+          {
+            "policy_number": "INS-9876",
+            "renewal_date": "2026-01-10",
+            "status": "pending"
+          }
+        ],
+        "broker_reports": []
+      },
+      "recommendations": [
+        "Investigate and resolve the $30,000 discrepancy between Swift payment and ledger allocation.",
+        "Ensure insurance records include all mandatory fields such as premium and coverage amount.",
+        "Review the timing and relationship of insurance policy renewal and payment dates to confirm correct sequencing."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Data Ingestion & Validation Agent",
+      "timestamp": "2024-06-13T15:24:05Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-20T14:45:17.946665",
+  "test_message_used": "Parse this sample text for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "validation_summary": {
+        "total_records_processed": 3,
+        "valid_records": 1,
+        "invalid_records": 2,
+        "warnings": 1
+      },
+      "data_quality_issues": [
+        {
+          "source": "Accounting Ledger",
+          "issue_type": "out_of_range",
+          "severity": "high",
+          "description": "Ledger allocated amount ($120,000) is less than Swift payment amount ($150,000), indicating a $30,000 discrepancy.",
+          "affected_records": 1
+        },
+        {
+          "source": "Insurance PDF",
+          "issue_type": "missing_field",
+          "severity": "medium",
+          "description": "Insurance policy record missing premium and coverage amount fields, which are required for completeness.",
+          "affected_records": 1
+        },
+        {
+          "source": "Swift API | Insurance PDF",
+          "issue_type": "inconsistency",
+          "severity": "low",
+          "description": "Insurance policy renewal date (2026-01-10) is prior to the Swift payment date (2026-01-15); potential mismatch in transaction-related timing.",
+          "affected_records": 1
+        }
+      ],
+      "normalized_data": {
+        "swift_transactions": [
+          {
+            "transaction_id": "PAY-2026-001",
+            "amount_usd": 150000,
+            "date": "2026-01-15",
+            "vendor": "ABC Corp."
+          }
+        ],
+        "ledger_entries": [
+          {
+            "entry_id": "LED-5432",
+            "budget_code": "MKT-Q1",
+            "allocated_amount_usd": 120000
+          }
+        ],
+        "insurance_records": [
+          {
+            "policy_number": "INS-9876",
+            "renewal_date": "2026-01-10",
+            "status": "pending"
+          }
+        ],
+        "broker_reports": []
+      },
+      "recommendations": [
+        "Investigate and resolve the $30,000 discrepancy between Swift payment and ledger allocation.",
+        "Ensure insurance records include all mandatory fields such as premium and coverage amount.",
+        "Review the timing and relationship of insurance policy renewal and payment dates to confirm correct sequencing."
+      ]
+    },
+    "metadata": {
+      "agent_name": "Data Ingestion & Validation Agent",
+      "timestamp": "2024-06-13T15:24:05Z"
+    }
+  },
+  "test_passed": true
+}

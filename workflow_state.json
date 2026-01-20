@@ -1,0 +1,111 @@
+{
+  "workflow_name": "AI Financial Workflow Monitoring and Alert Agent (AIF-MAA)",
+  "workflow_type": "manager_subagent_independent",
+  "created_at": "2026-01-20T00:00:00Z",
+  "agents": {
+    "manager": {
+      "agent_id": "696f93f13bd35d7a6606c88c",
+      "name": "Workflow Monitoring Coordinator",
+      "type": "manager",
+      "provider": "OpenAI",
+      "model": "gpt-4.1",
+      "temperature": 0.2,
+      "status": "active",
+      "managed_subagents": [
+        "696f93953bd35d7a6606c885",
+        "696f93b4b50537828e0b233f",
+        "696f93d1b50537828e0b2349"
+      ]
+    },
+    "subagents": [
+      {
+        "agent_id": "696f93953bd35d7a6606c885",
+        "name": "Data Ingestion & Validation Agent",
+        "type": "subagent",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.1,
+        "status": "active",
+        "purpose": "Data validation and normalization"
+      },
+      {
+        "agent_id": "696f93b4b50537828e0b233f",
+        "name": "Compliance Analysis Agent",
+        "type": "subagent",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.2,
+        "status": "active",
+        "purpose": "Compliance rule validation and benchmark analysis",
+        "has_knowledge_base": true,
+        "rag_id": "696f93a342263af0ef9d2b5a",
+        "rag_name": "compliancerulesknowledgebaseru1x"
+      },
+      {
+        "agent_id": "696f93d1b50537828e0b2349",
+        "name": "Flag Classification Agent",
+        "type": "subagent",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.3,
+        "status": "active",
+        "purpose": "Anomaly categorization and root cause analysis"
+      }
+    ],
+    "independent": [
+      {
+        "agent_id": "696f942ab50537828e0b235b",
+        "name": "Report Generation Agent",
+        "type": "independent",
+        "provider": "OpenAI",
+        "model": "gpt-4.1",
+        "temperature": 0.4,
+        "status": "active",
+        "purpose": "Weekly report generation and email distribution",
+        "tools": ["gmail"]
+      }
+    ]
+  },
+  "knowledge_bases": [
+    {
+      "rag_id": "696f93a342263af0ef9d2b5a",
+      "rag_name": "compliancerulesknowledgebaseru1x",
+      "name": "Compliance Rules Knowledge Base",
+      "description": "Budget/Payment rules, Insurance Compliance rules, Operational Bottleneck rules, and industry benchmarking standards",
+      "attached_to_agent": "696f93b4b50537828e0b233f"
+    }
+  ],
+  "response_schemas": [
+    {
+      "agent_id": "696f93953bd35d7a6606c885",
+      "schema_file": "response_schemas/data_ingestion_validation_agent_response.json",
+      "tested": true
+    },
+    {
+      "agent_id": "696f93b4b50537828e0b233f",
+      "schema_file": "response_schemas/compliance_analysis_agent_response.json",
+      "tested": true
+    },
+    {
+      "agent_id": "696f93d1b50537828e0b2349",
+      "schema_file": "response_schemas/flag_classification_agent_response.json",
+      "tested": true
+    },
+    {
+      "agent_id": "696f93f13bd35d7a6606c88c",
+      "schema_file": "response_schemas/workflow_monitoring_coordinator_response.json",
+      "tested": true
+    },
+    {
+      "agent_id": "696f942ab50537828e0b235b",
+      "schema_file": "response_schemas/report_generation_agent_response.json",
+      "tested": true
+    }
+  ],
+  "workflow_visualization": {
+    "nodes": 9,
+    "edges": 9,
+    "entry_points": ["data_input", "report_input"],
+    "exit_points": ["workflow_output", "report_output"]
+  }
+}

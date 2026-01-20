@@ -1,0 +1,300 @@
+{
+  "agent_name": "Flag Classification Agent",
+  "agent_id": "696f93d1b50537828e0b2349",
+  "agent_purpose": "analyzer",
+  "description": "Categorizes anomalies by type and severity; provides root cause analysis and impact assessment for each flag",
+  "response_schema": {
+    "status": "string",
+    "result": {
+      "classification_summary": {
+        "total_flags": "number",
+        "high_severity": "number",
+        "medium_severity": "number",
+        "low_severity": "number"
+      },
+      "classified_flags": [
+        {
+          "flag_id": "string",
+          "category": "string",
+          "severity": "string",
+          "title": "string",
+          "description": "string",
+          "root_cause": {
+            "primary_factor": "string",
+            "contributing_factors": [
+              "string"
+            ],
+            "systemic_issues": [
+              "string"
+            ],
+            "historical_pattern": "string"
+          },
+          "impact": {
+            "financial": "string",
+            "operational": "string",
+            "compliance": "string"
+          },
+          "recommended_actions": [
+            "string"
+          ],
+          "priority_score": "number"
+        }
+      ],
+      "aggregated_insights": {
+        "most_common_category": "string",
+        "trend_analysis": "string",
+        "systemic_patterns": [
+          "string"
+        ]
+      }
+    },
+    "metadata": {
+      "agent_name": "string",
+      "timestamp": "string"
+    }
+  },
+  "example_response": {
+    "status": "success",
+    "result": {
+      "classification_summary": {
+        "total_flags": 3,
+        "high_severity": 1,
+        "medium_severity": 1,
+        "low_severity": 1
+      },
+      "classified_flags": [
+        {
+          "flag_id": "1",
+          "category": "Budget",
+          "severity": "High",
+          "title": "Budget Exceeded by 25% ($30,000 Overage)",
+          "description": "The project budget was exceeded by 25%, resulting in a $30,000 overage.",
+          "root_cause": {
+            "primary_factor": "Ineffective budget controls and inaccurate forecasting.",
+            "contributing_factors": [
+              "Unanticipated project expenses",
+              "Lack of regular budget monitoring",
+              "Potential scope creep or changes in requirements"
+            ],
+            "systemic_issues": [
+              "Weak financial oversight process",
+              "Inconsistent budget review practices"
+            ],
+            "historical_pattern": "Previous projects have also experienced moderate overspending, though not at this magnitude."
+          },
+          "impact": {
+            "financial": "Significant overrun of allocated funds ($30,000)",
+            "operational": "May require reprioritization or reduction of project scope; risk of funding shortfalls.",
+            "compliance": "Potential breach of client or grant funding agreements, raising regulatory and audit risks."
+          },
+          "recommended_actions": [
+            "Implement stricter budget tracking and regular variance analyses.",
+            "Review all unplanned expenses and categorize root causes.",
+            "Strengthen change control processes for scope modifications.",
+            "Conduct post-mortem to prevent recurrence."
+          ],
+          "priority_score": 95
+        },
+        {
+          "flag_id": "2",
+          "category": "Insurance",
+          "severity": "Medium",
+          "title": "Insurance Renewal 5 Days Overdue",
+          "description": "Key insurance policy renewal has not been completed on time and is 5 days overdue, creating a temporary coverage gap.",
+          "root_cause": {
+            "primary_factor": "Delayed action on renewal reminders.",
+            "contributing_factors": [
+              "Manual process dependencies",
+              "Possible lack of automated alerts",
+              "Resource bottlenecks in administration"
+            ],
+            "systemic_issues": [
+              "Reactive policy management approach",
+              "Insufficient automation for compliance tasks"
+            ],
+            "historical_pattern": "Similar minor delays have occurred in prior renewals, typically resolved within one week."
+          },
+          "impact": {
+            "financial": "Potential liability exposure if incident occurs during gap.",
+            "operational": "Business operations at risk if proof of insurance is required.",
+            "compliance": "Possible non-compliance with contractual or regulatory requirements."
+          },
+          "recommended_actions": [
+            "Renew insurance immediately and confirm reinstatement of coverage.",
+            "Implement automated reminders and escalation for renewals.",
+            "Review administrative workload and allocate backup resources."
+          ],
+          "priority_score": 65
+        },
+        {
+          "flag_id": "3",
+          "category": "Operational",
+          "severity": "Low",
+          "title": "Task C Review Delayed by 8 Days",
+          "description": "The review for Task C was delayed by 8 days, impacting project timelines.",
+          "root_cause": {
+            "primary_factor": "Resource availability issues.",
+            "contributing_factors": [
+              "Competing priorities for reviewers",
+              "Insufficient advance scheduling",
+              "Unclear ownership or process steps"
+            ],
+            "systemic_issues": [
+              "Frequent task review backlogs",
+              "Lack of proactive workflow management"
+            ],
+            "historical_pattern": "Task reviews are often delayed by a few days, although typically not to this extent.",
+            "potential_cascading_effects": "If such delays accumulate, overall project delivery can slip."
+          },
+          "impact": {
+            "financial": "Minor cost impact from schedule slippage.",
+            "operational": "Potential cascading delays on dependent tasks.",
+            "compliance": "No immediate compliance issues."
+          },
+          "recommended_actions": [
+            "Set clear deadlines and assign task review owners.",
+            "Implement workflow automation where possible.",
+            "Monitor review timelines and follow up on delays."
+          ],
+          "priority_score": 35
+        }
+      ],
+      "aggregated_insights": {
+        "most_common_category": "No dominant category (one per type)",
+        "trend_analysis": "Current anomalies are distributed across budget, insurance, and operational domains with only the budget issue posing a high immediate risk.",
+        "systemic_patterns": [
+          "Lack of strong proactive controls across financial and compliance processes.",
+          "Recurring minor delays indicating potential workflow bottlenecks."
+        ]
+      }
+    },
+    "metadata": {
+      "agent_name": "Flag Classification Agent",
+      "timestamp": "2024-06-18T13:54:00Z"
+    }
+  },
+  "is_actual_tested": true,
+  "test_timestamp": "2026-01-20T14:45:45.590707",
+  "test_message_used": "Analyze this sample data for testing",
+  "actual_test_response": {
+    "status": "success",
+    "result": {
+      "classification_summary": {
+        "total_flags": 3,
+        "high_severity": 1,
+        "medium_severity": 1,
+        "low_severity": 1
+      },
+      "classified_flags": [
+        {
+          "flag_id": "1",
+          "category": "Budget",
+          "severity": "High",
+          "title": "Budget Exceeded by 25% ($30,000 Overage)",
+          "description": "The project budget was exceeded by 25%, resulting in a $30,000 overage.",
+          "root_cause": {
+            "primary_factor": "Ineffective budget controls and inaccurate forecasting.",
+            "contributing_factors": [
+              "Unanticipated project expenses",
+              "Lack of regular budget monitoring",
+              "Potential scope creep or changes in requirements"
+            ],
+            "systemic_issues": [
+              "Weak financial oversight process",
+              "Inconsistent budget review practices"
+            ],
+            "historical_pattern": "Previous projects have also experienced moderate overspending, though not at this magnitude."
+          },
+          "impact": {
+            "financial": "Significant overrun of allocated funds ($30,000)",
+            "operational": "May require reprioritization or reduction of project scope; risk of funding shortfalls.",
+            "compliance": "Potential breach of client or grant funding agreements, raising regulatory and audit risks."
+          },
+          "recommended_actions": [
+            "Implement stricter budget tracking and regular variance analyses.",
+            "Review all unplanned expenses and categorize root causes.",
+            "Strengthen change control processes for scope modifications.",
+            "Conduct post-mortem to prevent recurrence."
+          ],
+          "priority_score": 95
+        },
+        {
+          "flag_id": "2",
+          "category": "Insurance",
+          "severity": "Medium",
+          "title": "Insurance Renewal 5 Days Overdue",
+          "description": "Key insurance policy renewal has not been completed on time and is 5 days overdue, creating a temporary coverage gap.",
+          "root_cause": {
+            "primary_factor": "Delayed action on renewal reminders.",
+            "contributing_factors": [
+              "Manual process dependencies",
+              "Possible lack of automated alerts",
+              "Resource bottlenecks in administration"
+            ],
+            "systemic_issues": [
+              "Reactive policy management approach",
+              "Insufficient automation for compliance tasks"
+            ],
+            "historical_pattern": "Similar minor delays have occurred in prior renewals, typically resolved within one week."
+          },
+          "impact": {
+            "financial": "Potential liability exposure if incident occurs during gap.",
+            "operational": "Business operations at risk if proof of insurance is required.",
+            "compliance": "Possible non-compliance with contractual or regulatory requirements."
+          },
+          "recommended_actions": [
+            "Renew insurance immediately and confirm reinstatement of coverage.",
+            "Implement automated reminders and escalation for renewals.",
+            "Review administrative workload and allocate backup resources."
+          ],
+          "priority_score": 65
+        },
+        {
+          "flag_id": "3",
+          "category": "Operational",
+          "severity": "Low",
+          "title": "Task C Review Delayed by 8 Days",
+          "description": "The review for Task C was delayed by 8 days, impacting project timelines.",
+          "root_cause": {
+            "primary_factor": "Resource availability issues.",
+            "contributing_factors": [
+              "Competing priorities for reviewers",
+              "Insufficient advance scheduling",
+              "Unclear ownership or process steps"
+            ],
+            "systemic_issues": [
+              "Frequent task review backlogs",
+              "Lack of proactive workflow management"
+            ],
+            "historical_pattern": "Task reviews are often delayed by a few days, although typically not to this extent.",
+            "potential_cascading_effects": "If such delays accumulate, overall project delivery can slip."
+          },
+          "impact": {
+            "financial": "Minor cost impact from schedule slippage.",
+            "operational": "Potential cascading delays on dependent tasks.",
+            "compliance": "No immediate compliance issues."
+          },
+          "recommended_actions": [
+            "Set clear deadlines and assign task review owners.",
+            "Implement workflow automation where possible.",
+            "Monitor review timelines and follow up on delays."
+          ],
+          "priority_score": 35
+        }
+      ],
+      "aggregated_insights": {
+        "most_common_category": "No dominant category (one per type)",
+        "trend_analysis": "Current anomalies are distributed across budget, insurance, and operational domains with only the budget issue posing a high immediate risk.",
+        "systemic_patterns": [
+          "Lack of strong proactive controls across financial and compliance processes.",
+          "Recurring minor delays indicating potential workflow bottlenecks."
+        ]
+      }
+    },
+    "metadata": {
+      "agent_name": "Flag Classification Agent",
+      "timestamp": "2024-06-18T13:54:00Z"
+    }
+  },
+  "test_passed": true
+}
